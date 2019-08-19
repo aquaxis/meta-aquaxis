@@ -1,19 +1,18 @@
-From fe94c702c7396278e314804e8c4f8577f77075f3 Mon Sep 17 00:00:00 2001
+From 0f446c1f86a520268dc0929f67aa1f70e5bc41f9 Mon Sep 17 00:00:00 2001
 From: Hidemi Ishihara <hidemi@aquaxis.com>
-Date: Sat, 17 Aug 2019 22:28:02 +0000
-Subject: [PATCH 1/1] Added Ultra96 V2
+Date: Mon, 19 Aug 2019 14:31:12 +0000
+Subject: [PATCH 1/2] Added Ultra96-V2
 
 ---
- arch/arm/dts/zynqmp-ultra96-v2.dts            |  606 ++++++++++
- .../zynqmp/zynqmp-ultra96-v2/psu_init_gpl.c   | 1011 +++++++++++++++++
- configs/xilinx_zynqmp_ultra96_v2_defconfig    |   91 ++
- 3 files changed, 1708 insertions(+)
+ arch/arm/dts/zynqmp-ultra96-v2.dts         | 606 +++++++++++++++++++++
+ configs/xilinx_zynqmp_ultra96_v2_defconfig |  91 ++++
+ 2 files changed, 697 insertions(+)
  create mode 100644 arch/arm/dts/zynqmp-ultra96-v2.dts
  create mode 100644 configs/xilinx_zynqmp_ultra96_v2_defconfig
 
 diff --git a/arch/arm/dts/zynqmp-ultra96-v2.dts b/arch/arm/dts/zynqmp-ultra96-v2.dts
 new file mode 100644
-index 0000000000..5820ae8f38
+index 0000000000..c968cc620f
 --- /dev/null
 +++ b/arch/arm/dts/zynqmp-ultra96-v2.dts
 @@ -0,0 +1,606 @@
@@ -424,12 +423,12 @@ index 0000000000..5820ae8f38
 +		};
 +
 +		conf-rx {
-+			pins = "MIO1";
++			pins = "MIO44";
 +			bias-high-impedance;
 +		};
 +
 +		conf-tx {
-+			pins = "MIO0";
++			pins = "MIO45";
 +			bias-disable;
 +		};
 +	};
@@ -720,6 +719,6 @@ index 0000000000..35ac6d37ca
 +CONFIG_SPL_GZIP=y
 +CONFIG_OF_LIBFDT_OVERLAY=y
 +CONFIG_EFI_LOADER_BOUNCE_BUFFER=y
---
+-- 
 2.17.1
 
