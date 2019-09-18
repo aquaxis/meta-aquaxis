@@ -1,0 +1,25 @@
+From 91631570bada67c0c8b006c6487a53f8144d6a31 Mon Sep 17 00:00:00 2001
+From: Hidemi Ishihara <hidemi@aquaxis.com>
+Date: Mon, 19 Aug 2019 14:31:35 +0000
+Subject: [PATCH 2/2] Modify zynqmp_mmio_readwrite
+
+---
+ arch/arm/mach-zynqmp/cpu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/mach-zynqmp/cpu.c b/arch/arm/mach-zynqmp/cpu.c
+index 5ef1a52862..acedb38bb1 100644
+--- a/arch/arm/mach-zynqmp/cpu.c
++++ b/arch/arm/mach-zynqmp/cpu.c
+@@ -248,7 +248,7 @@ int zynqmp_mmio_read(const u32 address, u32 *value)
+ 	if (!value)
+ 		return -EINVAL;
+
+-	if (IS_ENABLED(CONFIG_SPL_BUILD) || current_el() == 3) {
++	if (IS_ENABLED(CONFIG_SPL_BUILD) || current_el() == 2 || current_el() == 3) {
+ 		ret = zynqmp_mmio_rawread(address, value);
+ 	} else {
+ 		ret = invoke_smc(ZYNQMP_MMIO_READ, address, 0, 0,
+--
+2.17.1
+
