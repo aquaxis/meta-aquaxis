@@ -27,9 +27,12 @@ COMPATIBLE_MACHINE_microblaze = "microblaze"
 # Default kernel config fragements for specific machines
 KERNEL_FEATURES_append_kc705-microblazeel = " bsp/kc705-microblazeel/kc705-microblazeel.scc"
 
-LINUX_VERSION = "5.2.16"
-SRCREV_machine_ultra96v2 = "245691ce16c7ba20a45d9ad81449f62d73a1dd95"
-SRCREV_machine ?= "245691ce16c7ba20a45d9ad81449f62d73a1dd95"
+#LINUX_VERSION = "5.2.16"
+#SRCREV_machine_ultra96v2 = "245691ce16c7ba20a45d9ad81449f62d73a1dd95"
+#SRCREV_machine ?= "245691ce16c7ba20a45d9ad81449f62d73a1dd95"
+LINUX_VERSION = "5.2.20"
+SRCREV_machine_ultra96v2 = "70e8470b0416583d569a21b9bc713b8850a3eaf7"
+SRCREV_machine ?= "70e8470b0416583d569a21b9bc713b8850a3eaf7"
 KBRANCH_ultra96v2 = "v5.2/standard/xlnx-soc"
 #KERNEL_DEVICETREE_ultra96v2 = "zynqmp-ultra96-v2.dtb"
 
