@@ -23,7 +23,7 @@ new file mode 100644
 index 000000000000..17ae9ef8815b
 --- /dev/null
 +++ b/arch/arm64/boot/dts/xilinx/zynqmp-ultra96-v2.dts
-@@ -0,0 +1,620 @@
+@@ -0,0 +1,627 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
 + * dts file for Xilinx ZynqMP ZCU100 revC
@@ -188,6 +188,13 @@ index 000000000000..17ae9ef8815b
 +			  "", "", "", "", "", "", "", "", "", "",
 +			  "", "", "", "", "", "", "", "", "", "",
 +			  "", "", "", "";
++};
++
++&amba {
++   zyxclmm_drm {
++       compatible = "xlnx,zocl";
++       status = "okay";
++   };
 +};
 +
 +&gpu {
