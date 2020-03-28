@@ -13,7 +13,7 @@ mkdir -p sources
 cd sources
 
 git clone https://github.com/openembedded/meta-openembedded.git -b $VERSION
-git clone https://github.com/xilinx/meta-xilinx -b warrior
+git clone https://github.com/xilinx/meta-xilinx -b $VERSION
 # git clone https://github.com/aquaxis/meta-ultra96.git -b $VERSION
 mv ../meta-ultra96 ./
 
