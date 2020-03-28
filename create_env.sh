@@ -34,6 +34,7 @@ source ./oe-init-build-env ../build_ultra96v2
 # Copy a config file/設定のコピー
 cp ../sources/meta-ultra96/conf/template/ultra96v2/bblayers.conf ./conf
 cp ../sources/meta-ultra96/conf/template/ultra96v2/local.conf ./conf
+touch ./conf/sanity.conf
 
 cd ..
 
@@ -44,3 +45,4 @@ source ./oe-init-build-env ../build_pmu-firmware
 # Copy a config file/設定のコピー
 cp ../sources/meta-ultra96/conf/template/pmu-firmware/bblayers.conf ./conf
 cp ../sources/meta-ultra96/conf/template/pmu-firmware/local.conf ./conf
+touch ./conf/sanity.conf
