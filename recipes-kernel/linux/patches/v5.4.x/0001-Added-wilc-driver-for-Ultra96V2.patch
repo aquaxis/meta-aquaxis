@@ -59,13 +59,13 @@ index 614359bc16ab..8b88fe747353 100644
 --- a/drivers/staging/Kconfig
 +++ b/drivers/staging/Kconfig
 @@ -88,6 +88,8 @@ source "drivers/staging/fsl-dpaa2/Kconfig"
- 
+
  source "drivers/staging/wilc1000/Kconfig"
- 
+
 +source "drivers/staging/wilc/Kconfig"
 +
  source "drivers/staging/most/Kconfig"
- 
+
  source "drivers/staging/ks7010/Kconfig"
 diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
 index e3b3163a91a0..2efccfa6f957 100644
@@ -157,7 +157,7 @@ index 000000000000..7eb8cf09bfa2
 +
 +obj-$(CONFIG_WILC_SPI) += wilc-spi.o
 +wilc-spi-objs += $(wilc-objs)
-+wilc-spi-objs += wilc_spi.o 
++wilc-spi-objs += wilc_spi.o
 diff --git a/drivers/staging/wilc/microchip,wilc1000,sdio.txt b/drivers/staging/wilc/microchip,wilc1000,sdio.txt
 new file mode 100644
 index 000000000000..8dc88bca2a83
@@ -13606,9 +13606,9 @@ index 000000000000..10d187ed480b
 +#define WILC_TX_BUFF_SIZE	(64 * 1024)
 +
 +#define MODALIAS		"WILC_SPI"
-+#define GPIO_NUM		0x5B
-+#define GPIO_NUM_CHIP_EN	94
-+#define GPIO_NUM_RESET		60
++#define GPIO_NUM		399
++#define GPIO_NUM_CHIP_EN	340
++#define GPIO_NUM_RESET		400
 +
 +#define NQUEUES			4
 +#define VO_AC_COUNT_POS		25
@@ -15278,6 +15278,5 @@ index 000000000000..6f479ca115ad
 +struct wilc;
 +
 +#endif
--- 
+--
 2.17.1
-
