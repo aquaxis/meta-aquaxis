@@ -36,6 +36,10 @@ cp ../sources/meta-ultra96/conf/template/ultra96v2/bblayers.conf ./conf
 cp ../sources/meta-ultra96/conf/template/ultra96v2/local.conf ./conf
 touch ./conf/sanity.conf
 
+# Create SD Card directory/SDカードディレクトリの作成
+mkdir sd_card
+cp ../sources/meta-ultra96/conf/template/sd_card/* ./sd_card/
+
 cd ..
 
 # Create a build directory/ビルドディレクトリの作成
@@ -46,7 +50,3 @@ source ./oe-init-build-env ../build_pmu-firmware
 cp ../sources/meta-ultra96/conf/template/pmu-firmware/bblayers.conf ./conf
 cp ../sources/meta-ultra96/conf/template/pmu-firmware/local.conf ./conf
 touch ./conf/sanity.conf
-
-# Create SD Card directory/SDカードディレクトリの作成
-mkdir sd_card
-cp ../sources/meta-ultra96/conf/template/sd_card/* .
