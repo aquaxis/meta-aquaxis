@@ -31,31 +31,27 @@ KERNEL_FEATURES_append_kc705-microblazeel = " bsp/kc705-microblazeel/kc705-micro
 
 
 # Linux Kernel 5.2.x
-LINUX_VERSION = "5.2.35"
-SRCREV_machine_ultra96v2 = "b1941049fa9c5330858d0a1782283b54407e00ea"
-SRCREV_machine ?= "b1941049fa9c5330858d0a1782283b54407e00ea"
-KBRANCH_ultra96v2 = "v5.2/standard/xlnx-soc"
+#LINUX_VERSION = "5.2.35"
+#SRCREV_machine_ultra96v2 = "b1941049fa9c5330858d0a1782283b54407e00ea"
+#SRCREV_machine = "b1941049fa9c5330858d0a1782283b54407e00ea"
+#KBRANCH_ultra96v2 = "v5.2/standard/xlnx-soc"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/patches/v5.2.x:"
-SRC_URI_append = " file://0001-Added-wilc-driver-for-Ultra96V2.patch "
-SRC_URI_append = " file://0002-Added-DeviceTree-for-Ultra96V2.patch "
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/files/v5.2.x:"
-SRC_URI_append = " file://defconfig.cfg"
-
-#LINUX_VERSION = "5.2.31"
-#SRCREV_machine_ultra96v2 = "bb82ee5b8ad50cf78af3d2ea6b4339fa651cb3c7"
-#SRCREV_machine ?= "bb82ee5b8ad50cf78af3d2ea6b4339fa651cb3c7"
-
-# Linux Kernel 5.4.x
-#LINUX_VERSION = "5.4.27"
-#SRCREV_machine_ultra96v2 = "b87e67fcf4b533cd96d51031dc6a33a852eded93"
-#SRCREV_machine ?= "b87e67fcf4b533cd96d51031dc6a33a852eded93"
-#KBRANCH_ultra96v2 = "v5.4/standard/xlnx-soc"
-
-#FILESEXTRAPATHS_prepend := "${THISDIR}/patches/v5.4.x:"
+#FILESEXTRAPATHS_prepend := "${THISDIR}/patches/v5.2.x:"
 #SRC_URI_append = " file://0001-Added-wilc-driver-for-Ultra96V2.patch "
 #SRC_URI_append = " file://0002-Added-DeviceTree-for-Ultra96V2.patch "
 
-#FILESEXTRAPATHS_prepend := "${THISDIR}/files/v5.4.x:"
+#FILESEXTRAPATHS_prepend := "${THISDIR}/files/v5.2.x:"
 #SRC_URI_append = " file://defconfig.cfg"
+
+# Linux Kernel 5.4.x
+LINUX_VERSION = "5.4.34"
+SRCREV_machine_ultra96v2 = "e35252705ac0e8c00aed29e3377bb36cd2f6184b"
+SRCREV_machine = "e35252705ac0e8c00aed29e3377bb36cd2f6184b"
+KBRANCH_ultra96v2 = "v5.4/standard/xlnx-soc"
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/patches/v5.4.x:"
+#SRC_URI_append = " file://0001-Added-wilc-driver-for-Ultra96V2.patch "
+#SRC_URI_append = " file://0002-Added-DeviceTree-for-Ultra96V2.patch "
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/files/v5.4.x:"
+SRC_URI_append = " file://defconfig.cfg"

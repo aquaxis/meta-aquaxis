@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Version/バージョン
-VERSION="zeus"
+VERSION="dunfell"
 
 echo 'Download Version: ' $VERSION
 
@@ -13,9 +13,13 @@ mkdir -p sources
 cd sources
 
 git clone https://github.com/openembedded/meta-openembedded.git -b $VERSION
-git clone https://github.com/xilinx/meta-xilinx -b $VERSION
+#git clone https://github.com/xilinx/meta-xilinx -b $VERSION
+git clone https://github.com/xilinx/meta-xilinx -b zeus
 # git clone https://github.com/aquaxis/meta-ultra96.git -b $VERSION
 mv ../meta-ultra96 ./
+
+# Python2
+git clone https://git.openembedded.org/meta-python2
 
 # Other recipes
 # git clone https://git.linaro.org/openembedded/meta-linaro.git -b $VERSION

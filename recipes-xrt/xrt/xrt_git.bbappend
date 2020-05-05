@@ -7,5 +7,4 @@ LIC_FILES_CHKSUM = "file://../LICENSE;md5=da5408f748bce8a9851dac18e66f4bcf \
 BRANCH = "master"
 
 PV = "2.2.0+git${SRCPV}"
-SRCREV = "8f31e7633b20d8ebd67717adad8bc246e9bb5e19"
-
+SRCREV = "8429cd2a5f15daffdae9dc44ec6a4ff058370f03"
