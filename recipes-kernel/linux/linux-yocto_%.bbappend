@@ -27,7 +27,7 @@ COMPATIBLE_MACHINE_microblaze = "microblaze"
 # Default kernel config fragements for specific machines
 KERNEL_FEATURES_append_kc705-microblazeel = " bsp/kc705-microblazeel/kc705-microblazeel.scc"
 
-#KERNEL_DEVICETREE_ultra96v2 = "zynqmp-ultra96-v2.dtb"
+#KERNEL_DEVICETREE_ultra96v2 = "xilinx/zynqmp-ultra96-v2.dtb"
 
 
 # Linux Kernel 5.2.x
