@@ -1,12 +1,13 @@
-From 0f61946bae371516c6be728cd286280b8f5913e6 Mon Sep 17 00:00:00 2001
-From: Hidemi Ishihara <hidemi@aquaxis.com>
-Date: Sat, 28 Mar 2020 17:03:47 +0900
-Subject: [PATCH 2/2] Added DeviceTree for Ultra96V2
+From 5ff16825ef10e35358288c74519a508b44d6d0f5 Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Wed, 3 Jun 2020 09:11:35 +0000
+Subject: [PATCH] Added DeviceTree for Ultra96V2
 
+* added devicetree for ultra96v2
 ---
  arch/arm64/boot/dts/xilinx/Makefile           |   1 +
- .../boot/dts/xilinx/zynqmp-ultra96-v2.dts     | 620 ++++++++++++++++++
- 2 files changed, 621 insertions(+)
+ .../boot/dts/xilinx/zynqmp-ultra96-v2.dts     | 627 ++++++++++++++++++
+ 2 files changed, 628 insertions(+)
  create mode 100644 arch/arm64/boot/dts/xilinx/zynqmp-ultra96-v2.dts
 
 diff --git a/arch/arm64/boot/dts/xilinx/Makefile b/arch/arm64/boot/dts/xilinx/Makefile
@@ -20,10 +21,10 @@ index 5aef9e0951ac..49293da99153 100644
 +dtb-$(CONFIG_ARCH_ZYNQMP) += zynqmp-ultra96-v2.dtb
 diff --git a/arch/arm64/boot/dts/xilinx/zynqmp-ultra96-v2.dts b/arch/arm64/boot/dts/xilinx/zynqmp-ultra96-v2.dts
 new file mode 100644
-index 000000000000..99879c1c201f
+index 000000000000..91079d277a85
 --- /dev/null
 +++ b/arch/arm64/boot/dts/xilinx/zynqmp-ultra96-v2.dts
-@@ -0,0 +1,620 @@
+@@ -0,0 +1,627 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
 + * dts file for Xilinx ZynqMP ZCU100 revC
@@ -188,6 +189,13 @@ index 000000000000..99879c1c201f
 +			  "", "", "", "", "", "", "", "", "", "",
 +			  "", "", "", "", "", "", "", "", "", "",
 +			  "", "", "", "";
++};
++
++&amba {
++   zyxclmm_drm {
++       compatible = "xlnx,zocl";
++       status = "okay";
++   };
 +};
 +
 +&gpu {
@@ -645,5 +653,5 @@ index 000000000000..99879c1c201f
 +	status = "okay";
 +};
 -- 
-2.17.1
+2.25.1
 
