@@ -14,6 +14,8 @@ sudo cp boot.bin /mnt
 sudo cp Image /mnt
 sudo cp uEnv.txt /mnt
 sudo cp zynqmp-ultra96-v2.dtb /mnt
+sudo mkdir -p /mnt/extlinux
+sudo cp extlinux.conf /mnt/extlinux
 sync
 sudo umount ${DEVICE}*
 sudo mount ${DEVICE}2 /mnt
