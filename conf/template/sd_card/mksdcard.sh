@@ -10,7 +10,7 @@ sudo mkfs.vfat -n BOOT ${DEVICE}1
 sudo mkfs.ext4 -F -L ROOT ${DEVICE}2
 
 sudo mount ${DEVICE}1 /mnt
-sudo cp boot.bin /mnt
+sudo cp BOOT.BIN /mnt
 sudo cp Image /mnt
 sudo cp zynqmp-ultra96-v2.dtb /mnt
 sudo mkdir -p /mnt/extlinux
