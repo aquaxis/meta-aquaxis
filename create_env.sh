@@ -16,6 +16,12 @@ git clone https://github.com/openembedded/meta-openembedded.git -b $VERSION
 #git clone https://github.com/xilinx/meta-xilinx -b $VERSION
 #git clone https://github.com/xilinx/meta-xilinx -b zeus
 git clone https://github.com/xilinx/meta-xilinx -b rel-v2020.1
+sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-bsp/conf/layer.conf
+sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-pynq/conf/layer.conf
+sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-contrib/conf/layer.conf
+sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-standalone/conf/layer.conf
+sed meta-xilinx/
+
 # git clone https://github.com/aquaxis/meta-ultra96.git -b $VERSION
 mv ../meta-ultra96 ./
 
