@@ -20,13 +20,11 @@ sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-bsp/conf/layer.conf
 sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-pynq/conf/layer.conf
 sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-contrib/conf/layer.conf
 sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-standalone/conf/layer.conf
-sed meta-xilinx/
+# Python2
+git clone https://git.openembedded.org/meta-python2
 
 # git clone https://github.com/aquaxis/meta-ultra96.git -b $VERSION
 mv ../meta-ultra96 ./
-
-# Python2
-git clone https://git.openembedded.org/meta-python2
 
 # Other recipes
 # git clone https://git.linaro.org/openembedded/meta-linaro.git -b $VERSION
