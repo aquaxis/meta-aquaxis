@@ -58,3 +58,5 @@ SDK has been successfully set up and is ready to be used.
 Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
  $ . /opt/poky/3.0.2_ultra96v2/environment-setup-aarch64-poky-linux
 ```
+
+# about
