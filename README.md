@@ -1,4 +1,4 @@
-# meta-ultra96
+# meta-aquaxis
 
 ## Create a work directory
 
@@ -9,14 +9,14 @@ $ cd <BUILD_DIR>
 
 ## Download & Build Yocto Project
 
-1. Download a meta-ultra96
+1. Download a meta-aquaxis
 2. Execute a create_env.sh
 3. Build PMU Firmware
 4. Build Linux Distribution
 
 ```bash
-$ git clone https://github.com/aquaxis/meta-ultra96
-$ ./meta-ultra96/create_env.sh
+$ git clone https://github.com/aquaxis/meta-aquaxis
+$ ./meta-aquaxis/create_env.sh
 $ cd poky/
 $ source ./oe-init-build-env ../build_pmu-firmware/
 $ bitbake pmu-firmware
