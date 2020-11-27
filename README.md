@@ -1,4 +1,4 @@
-# meta-ultra96
+# meta-aquaxis
 
 ## Create a work directory
 
@@ -9,14 +9,14 @@ $ cd <BUILD_DIR>
 
 ## Download & Build Yocto Project
 
-1. Download a meta-ultra96
+1. Download a meta-aquaxis
 2. Execute a create_env.sh
 3. Build PMU Firmware
 4. Build Linux Distribution
 
 ```bash
-$ git clone https://github.com/aquaxis/meta-ultra96
-$ ./meta-ultra96/create_env.sh
+$ git clone https://github.com/aquaxis/meta-aquaxis
+$ ./meta-aquaxis/create_env.sh
 $ cd poky/
 $ source ./oe-init-build-env ../build_pmu-firmware/
 $ bitbake pmu-firmware
@@ -58,3 +58,5 @@ SDK has been successfully set up and is ready to be used.
 Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
  $ . /opt/poky/3.0.2_ultra96v2/environment-setup-aarch64-poky-linux
 ```
+
+# about

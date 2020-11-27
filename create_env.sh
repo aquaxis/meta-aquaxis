@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Version/バージョン
-VERSION="zeus"
+VERSION="gatesgarth"
 
 echo 'Download Version: ' $VERSION
 
@@ -13,9 +13,21 @@ mkdir -p sources
 cd sources
 
 git clone https://github.com/openembedded/meta-openembedded.git -b $VERSION
+#git clone https://github.com/xilinx/meta-xilinx -b $VERSION
+#git clone https://github.com/xilinx/meta-xilinx -b zeus
+#git clone https://github.com/xilinx/meta-xilinx -b rel-v2020.1
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-bsp/conf/layer.conf
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-pynq/conf/layer.conf
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-contrib/conf/layer.conf
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-standalone/conf/layer.conf
 git clone https://github.com/xilinx/meta-xilinx -b $VERSION
-# git clone https://github.com/aquaxis/meta-ultra96.git -b $VERSION
-mv ../meta-ultra96 ./
+git clone https://github.com/xilinx/meta-xilinx-tools -b $VERSION
+git clone https://github.com/xilinx/meta-vitis-ai -b $VERSION
+# Python2
+#git clone https://git.openembedded.org/meta-python2
+
+# git clone https://github.com/aquaxis/meta-aquaxis.git -b $VERSION
+mv ../meta-aquaxis ./
 
 # Other recipes
 # git clone https://git.linaro.org/openembedded/meta-linaro.git -b $VERSION
@@ -32,13 +44,13 @@ cd poky
 source ./oe-init-build-env ../build_ultra96v2
 
 # Copy a config file/設定のコピー
-cp ../sources/meta-ultra96/conf/template/ultra96v2/bblayers.conf ./conf
-cp ../sources/meta-ultra96/conf/template/ultra96v2/local.conf ./conf
+cp ../sources/meta-aquaxis/conf/template/ultra96v2/bblayers.conf ./conf
+cp ../sources/meta-aquaxis/conf/template/ultra96v2/local.conf ./conf
 touch ./conf/sanity.conf
 
 # Create SD Card directory/SDカードディレクトリの作成
 mkdir sd_card
-cp ../sources/meta-ultra96/conf/template/sd_card/* ./sd_card/
+cp ../sources/meta-aquaxis/conf/template/sd_card/* ./sd_card/
 
 cd ..
 
@@ -47,6 +59,6 @@ cd poky
 source ./oe-init-build-env ../build_pmu-firmware
 
 # Copy a config file/設定のコピー
-cp ../sources/meta-ultra96/conf/template/pmu-firmware/bblayers.conf ./conf
-cp ../sources/meta-ultra96/conf/template/pmu-firmware/local.conf ./conf
+cp ../sources/meta-aquaxis/conf/template/pmu-firmware/bblayers.conf ./conf
+cp ../sources/meta-aquaxis/conf/template/pmu-firmware/local.conf ./conf
 touch ./conf/sanity.conf

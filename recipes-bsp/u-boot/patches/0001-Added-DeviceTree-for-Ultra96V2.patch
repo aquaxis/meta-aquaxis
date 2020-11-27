@@ -1,26 +1,40 @@
-From 0f446c1f86a520268dc0929f67aa1f70e5bc41f9 Mon Sep 17 00:00:00 2001
+From 8e5d5651fcf33520fae3aefbe6d8f394803bb1b1 Mon Sep 17 00:00:00 2001
 From: Hidemi Ishihara <hidemi@aquaxis.com>
-Date: Mon, 19 Aug 2019 14:31:12 +0000
-Subject: [PATCH 1/2] Added Ultra96-V2
+Date: Mon, 8 Jun 2020 22:26:07 +0900
+Subject: [PATCH 1/2] Added DeviceTree for Ultra96V2
 
 ---
- arch/arm/dts/zynqmp-ultra96-v2.dts         | 606 +++++++++++++++++++++
- configs/xilinx_zynqmp_ultra96_v2_defconfig |  91 ++++
- 2 files changed, 697 insertions(+)
- create mode 100644 arch/arm/dts/zynqmp-ultra96-v2.dts
- create mode 100644 configs/xilinx_zynqmp_ultra96_v2_defconfig
+ arch/arm/dts/Makefile              |   3 +-
+ arch/arm/dts/zynqmp-ultra96-v2.dts | 614 +++++++++++++++++++++++++++++
+ 2 files changed, 616 insertions(+), 1 deletion(-)
+ create mode 100755 arch/arm/dts/zynqmp-ultra96-v2.dts
 
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index ed6643e639..ef3c8eaab1 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -308,7 +308,8 @@ dtb-$(CONFIG_ARCH_ZYNQMP) += \
+ 	zynqmp-zc1751-xm016-dc2.dtb		\
+ 	zynqmp-zc1751-xm017-dc3.dtb		\
+ 	zynqmp-zc1751-xm018-dc4.dtb		\
+-	zynqmp-zc1751-xm019-dc5.dtb
++	zynqmp-zc1751-xm019-dc5.dtb		\
++	zynqmp-ultra96-v2.dtb
+ dtb-$(CONFIG_ARCH_VERSAL) += \
+ 	versal-mini.dtb \
+ 	versal-mini-emmc0.dtb \
 diff --git a/arch/arm/dts/zynqmp-ultra96-v2.dts b/arch/arm/dts/zynqmp-ultra96-v2.dts
-new file mode 100644
-index 0000000000..c968cc620f
+new file mode 100755
+index 0000000000..6d34f05eb3
 --- /dev/null
 +++ b/arch/arm/dts/zynqmp-ultra96-v2.dts
-@@ -0,0 +1,606 @@
+@@ -0,0 +1,614 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
 + * dts file for Xilinx ZynqMP Ultra96 V2
 + *
 + * (C) Copyright 2016 - 2018, Xilinx, Inc.
++ * (C) Copyright 2020, AQUAXIS TECHNOLOGY.
 + *
 + * Michal Simek <michal.simek@xilinx.com>
 + * Nathalie Chan King Choy
@@ -72,7 +86,7 @@ index 0000000000..c968cc620f
 +			label = "sw4";
 +			gpios = <&gpio 23 GPIO_ACTIVE_LOW>;
 +			linux,code = <KEY_POWER>;
-+			gpio-key,wakeup;
++			wakeup-source;
 +			autorepeat;
 +		};
 +	};
@@ -114,7 +128,7 @@ index 0000000000..c968cc620f
 +			linux,default-trigger = "bluetooth-power";
 +		};
 +
-+		vbus_det { /* U5 USB5744 VBUS detection via MIO25 */
++		vbus-det { /* U5 USB5744 VBUS detection via MIO25 */
 +			label = "vbus_det";
 +			gpios = <&gpio 25 GPIO_ACTIVE_HIGH>;
 +			default-state = "on";
@@ -139,9 +153,15 @@ index 0000000000..c968cc620f
 +		regulator-boot-on;
 +	};
 +
-+	sdio_pwrseq: sdio_pwrseq {
++	sdio_pwrseq: sdio-pwrseq {
 +		compatible = "mmc-pwrseq-simple";
 +		reset-gpios = <&gpio 7 GPIO_ACTIVE_LOW>; /* WIFI_EN */
++		post-power-on-delay-ms = <10>;
++	};
++
++	ina226 {
++		compatible = "iio-hwmon";
++		io-channels = <&u35 0>, <&u35 1>, <&u35 2>, <&u35 3>;
 +	};
 +};
 +
@@ -240,8 +260,9 @@ index 0000000000..c968cc620f
 +			#size-cells = <0>;
 +			reg = <5>;
 +			/* PS_PMBUS */
-+			ina226@40 { /* u35 */
++			u35: ina226@40 { /* u35 */
 +				compatible = "ti,ina226";
++				#io-channel-cells = <1>;
 +				reg = <0x40>;
 +				shunt-resistor = <10000>;
 +				/* MIO31 is alert which should be routed to PMUFW */
@@ -622,103 +643,6 @@ index 0000000000..c968cc620f
 +&ams_ps {
 +	status = "okay";
 +};
-diff --git a/configs/xilinx_zynqmp_ultra96_v2_defconfig b/configs/xilinx_zynqmp_ultra96_v2_defconfig
-new file mode 100644
-index 0000000000..35ac6d37ca
---- /dev/null
-+++ b/configs/xilinx_zynqmp_ultra96_v2_defconfig
-@@ -0,0 +1,91 @@
-+CONFIG_ARM=y
-+CONFIG_ARCH_ZYNQMP=y
-+CONFIG_SYS_TEXT_BASE=0x8000000
-+CONFIG_SYS_MALLOC_F_LEN=0x8000
-+CONFIG_SPL=y
-+CONFIG_DEBUG_UART_BASE=0xff010000
-+CONFIG_DEBUG_UART_CLOCK=100000000
-+CONFIG_ZYNQ_SDHCI_MAX_FREQ=15000000
-+CONFIG_ZYNQMP_USB=y
-+CONFIG_DEBUG_UART=y
-+CONFIG_DISTRO_DEFAULTS=y
-+CONFIG_FIT=y
-+CONFIG_FIT_VERBOSE=y
-+CONFIG_SPL_LOAD_FIT=y
-+# CONFIG_DISPLAY_CPUINFO is not set
-+CONFIG_SPL_OS_BOOT=y
-+CONFIG_SPL_RAM_SUPPORT=y
-+CONFIG_SPL_RAM_DEVICE=y
-+CONFIG_SPL_ATF=y
-+CONFIG_SYS_PROMPT="ZynqMP> "
-+CONFIG_CMD_BOOTMENU=y
-+CONFIG_CMD_MEMTEST=y
-+CONFIG_CMD_BIND=y
-+CONFIG_CMD_CLK=y
-+CONFIG_CMD_DFU=y
-+# CONFIG_CMD_FLASH is not set
-+CONFIG_CMD_FPGA_LOADBP=y
-+CONFIG_CMD_FPGA_LOADP=y
-+CONFIG_CMD_GPIO=y
-+CONFIG_CMD_I2C=y
-+CONFIG_CMD_MMC=y
-+CONFIG_CMD_POWEROFF=y
-+CONFIG_CMD_SPI=y
-+CONFIG_CMD_USB=y
-+CONFIG_CMD_USB_MASS_STORAGE=y
-+CONFIG_CMD_TFTPPUT=y
-+CONFIG_CMD_TIME=y
-+CONFIG_CMD_TIMER=y
-+CONFIG_CMD_EXT4_WRITE=y
-+CONFIG_SPL_OF_CONTROL=y
-+CONFIG_DEFAULT_DEVICE_TREE="zynqmp-ultra96-v2"
-+CONFIG_NET_RANDOM_ETHADDR=y
-+CONFIG_SPL_DM=y
-+CONFIG_SPL_DM_SEQ_ALIAS=y
-+CONFIG_CLK_ZYNQMP=y
-+CONFIG_DFU_RAM=y
-+CONFIG_FPGA_XILINX=y
-+CONFIG_FPGA_ZYNQMPPL=y
-+CONFIG_DM_GPIO=y
-+CONFIG_XILINX_GPIO=y
-+CONFIG_DM_I2C=y
-+CONFIG_SYS_I2C_CADENCE=y
-+CONFIG_I2C_MUX=y
-+CONFIG_I2C_MUX_PCA954x=y
-+CONFIG_LED=y
-+CONFIG_LED_GPIO=y
-+CONFIG_MISC=y
-+CONFIG_MMC_SDHCI=y
-+CONFIG_MMC_SDHCI_ZYNQ=y
-+CONFIG_SPI_FLASH=y
-+CONFIG_SPI_FLASH_BAR=y
-+CONFIG_SPI_FLASH_ISSI=y
-+CONFIG_SPI_FLASH_MACRONIX=y
-+CONFIG_SPI_FLASH_SPANSION=y
-+CONFIG_SPI_FLASH_STMICRO=y
-+CONFIG_SPI_FLASH_WINBOND=y
-+# CONFIG_SPI_FLASH_USE_4K_SECTORS is not set
-+# CONFIG_NETDEVICES is not set
-+CONFIG_DEBUG_UART_ZYNQ=y
-+CONFIG_DEBUG_UART_ANNOUNCE=y
-+CONFIG_ZYNQ_SERIAL=y
-+CONFIG_SPI=y
-+CONFIG_ZYNQ_SPI=y
-+CONFIG_USB=y
-+CONFIG_USB_XHCI_HCD=y
-+CONFIG_USB_XHCI_DWC3=y
-+CONFIG_USB_XHCI_ZYNQMP=y
-+CONFIG_USB_DWC3=y
-+CONFIG_USB_DWC3_GADGET=y
-+CONFIG_USB_DWC3_GENERIC=y
-+CONFIG_USB_ULPI_VIEWPORT=y
-+CONFIG_USB_ULPI=y
-+CONFIG_USB_GADGET=y
-+CONFIG_USB_GADGET_DOWNLOAD=y
-+CONFIG_USB_ETHER=y
-+CONFIG_USB_ETH_CDC=y
-+CONFIG_USB_HOST_ETHER=y
-+CONFIG_USB_ETHER_ASIX=y
-+CONFIG_SPL_GZIP=y
-+CONFIG_OF_LIBFDT_OVERLAY=y
-+CONFIG_EFI_LOADER_BOUNCE_BUFFER=y
 -- 
-2.17.1
+2.25.1
 

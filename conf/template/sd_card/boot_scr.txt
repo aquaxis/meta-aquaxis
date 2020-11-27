@@ -1,0 +1,11 @@
+setenv machine_name ultra96v2
+setenv kernel_image Image
+setenv kernel_load_address 0x80000
+setenv devicetree_image zynqmp-ultra96-v2.dtb
+setenv devicetree_load_address 0x4000000
+setenv bootargs "earlycon clk_ignore_unused root=/dev/mmcblk0p2 rw rootwait"
+setenv loadkernel "fatload mmc 0 ${kernel_load_address} ${kernel_image}"
+setenv loaddtb "fatload mmc 0 ${devicetree_load_address} ${devicetree_image}"
+setenv bootkernel "run loadkernel && run loaddtb && booti ${kernel_load_address} - ${devicetree_load_address}"
+run bootkernel
+# mkimage -A arm -T script -O linux -d boot_scr.txt boot.scr
