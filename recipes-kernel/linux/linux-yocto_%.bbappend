@@ -6,7 +6,7 @@ python () {
 
 # Add meta-xilinx kmeta
 FILESEXTRAPATHS_prepend := "${THISDIR}:"
-SRC_URI_append = " file://xilinx-kmeta;type=kmeta;name=xilinx-kmeta;destsuffix=xilinx-kmeta"
+#SRC_URI_append = " file://xilinx-kmeta;type=kmeta;name=xilinx-kmeta;destsuffix=xilinx-kmeta"
 
 # Zynq default generic KMACHINE
 COMPATIBLE_MACHINE_zynq = "zynq"
@@ -52,8 +52,25 @@ SRCREV_machine_ultra96v2 = "298f136c10d7ed67b6185a7923e08fdca7dd8f8c"
 SRCREV_machine = "298f136c10d7ed67b6185a7923e08fdca7dd8f8c"
 KBRANCH_ultra96v2 = "v5.4/standard/xlnx-soc"
 
+LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/patches/v5.4.x:"
 SRC_URI_append = " file://0001-Added-DeviceTree-for-Ultra96V2.patch "
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files/v5.4.x:"
 SRC_URI_append = " file://defconfig.cfg"
+
+######################################################################
+# Linux Kernel 5.7.x
+######################################################################
+#LINUX_VERSION = "5.7.19"
+#SRCREV_machine_ultra96v2 = "8e7ffa0e01be9ddf7b68986f1fc1bc82f85e3127"
+#SRCREV_machine = "8e7ffa0e01be9ddf7b68986f1fc1bc82f85e3127"
+#KBRANCH_ultra96v2 = "v5.7/standard/xlnx-soc"
+
+#FILESEXTRAPATHS_prepend := "${THISDIR}/patches/v5.7.x:"
+#SRC_URI_append = " file://0001-Added-DeviceTree-for-Ultra96V2.patch "
+
+#FILESEXTRAPATHS_prepend := "${THISDIR}/files/v5.7.x:"
+#SRC_URI_append = " file://defconfig.cfg"
+

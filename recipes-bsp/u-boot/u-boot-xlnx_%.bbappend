@@ -26,7 +26,7 @@ do_compile () {
     echo "**************************************************"
     echo "make"
     echo "**************************************************"
-    oe_runmake
+    oe_runmake u-boot.elf
 #    oe_runmake -C ${S} O=${B} ${UBOOT_MAKE_TARGET}
     echo "**************************************************"
     echo END
@@ -49,16 +49,16 @@ do_install () {
             ln -sf ${UBOOT_ELF_IMAGE} ${D}/boot/${UBOOT_ELF_BINARY}
     fi
 
-    if [ -e ${WORKDIR}/fw_env.config ] ; then
-        install -d ${D}${sysconfdir}
-        install -m 644 ${WORKDIR}/fw_env.config ${D}${sysconfdir}/fw_env.config
-    fi
+#    if [ -e ${WORKDIR}/fw_env.config ] ; then
+#        install -d ${D}${sysconfdir}
+#        install -m 644 ${WORKDIR}/fw_env.config ${D}${sysconfdir}/fw_env.config
+#    fi
 
-    if [ -n "${SPL_BINARY}" ]
-    then
-            install -m 644 ${B}/${SPL_BINARY} ${D}/boot/${SPL_IMAGE}
-            ln -sf ${SPL_IMAGE} ${D}/boot/${SPL_BINARYNAME}
-    fi
+#    if [ -n "${SPL_BINARY}" ]
+#    then
+#            install -m 644 ${B}/${SPL_BINARY} ${D}/boot/${SPL_IMAGE}
+#            ln -sf ${SPL_IMAGE} ${D}/boot/${SPL_BINARYNAME}
+#    fi
 
     if [ -n "${UBOOT_ENV}" ]
     then
@@ -97,13 +97,13 @@ do_deploy () {
     fi
 
 
-    if [ -n "${SPL_BINARY}" ]
-    then
-            install -m 644 ${B}/${SPL_BINARY} ${DEPLOYDIR}/${SPL_IMAGE}
-            rm -f ${DEPLOYDIR}/${SPL_BINARYNAME} ${DEPLOYDIR}/${SPL_SYMLINK}
-            ln -sf ${SPL_IMAGE} ${DEPLOYDIR}/${SPL_BINARYNAME}
-            ln -sf ${SPL_IMAGE} ${DEPLOYDIR}/${SPL_SYMLINK}
-    fi
+#    if [ -n "${SPL_BINARY}" ]
+#    then
+#            install -m 644 ${B}/${SPL_BINARY} ${DEPLOYDIR}/${SPL_IMAGE}
+#            rm -f ${DEPLOYDIR}/${SPL_BINARYNAME} ${DEPLOYDIR}/${SPL_SYMLINK}
+#            ln -sf ${SPL_IMAGE} ${DEPLOYDIR}/${SPL_BINARYNAME}
+#            ln -sf ${SPL_IMAGE} ${DEPLOYDIR}/${SPL_SYMLINK}
+#    fi
 
 
     if [ -n "${UBOOT_ENV}" ]

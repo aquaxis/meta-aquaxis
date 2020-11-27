@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Version/バージョン
-VERSION="dunfell"
+VERSION="gatesgarth"
 
 echo 'Download Version: ' $VERSION
 
@@ -15,13 +15,16 @@ cd sources
 git clone https://github.com/openembedded/meta-openembedded.git -b $VERSION
 #git clone https://github.com/xilinx/meta-xilinx -b $VERSION
 #git clone https://github.com/xilinx/meta-xilinx -b zeus
-git clone https://github.com/xilinx/meta-xilinx -b rel-v2020.1
-sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-bsp/conf/layer.conf
-sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-pynq/conf/layer.conf
-sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-contrib/conf/layer.conf
-sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-standalone/conf/layer.conf
+#git clone https://github.com/xilinx/meta-xilinx -b rel-v2020.1
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-bsp/conf/layer.conf
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-pynq/conf/layer.conf
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-contrib/conf/layer.conf
+#sed -i -e 's/zeus/dunfell/g' meta-xilinx/meta-xilinx-standalone/conf/layer.conf
+git clone https://github.com/xilinx/meta-xilinx -b $VERSION
+git clone https://github.com/xilinx/meta-xilinx-tools -b $VERSION
+git clone https://github.com/xilinx/meta-vitis-ai -b $VERSION
 # Python2
-git clone https://git.openembedded.org/meta-python2
+#git clone https://git.openembedded.org/meta-python2
 
 # git clone https://github.com/aquaxis/meta-aquaxis.git -b $VERSION
 mv ../meta-aquaxis ./
