@@ -1,6 +1,6 @@
-From 9a994431742da6b4061c1d31a365de6dde8035b2 Mon Sep 17 00:00:00 2001
+From cf7ae7a2ff032d1048a076c5ed8e87d800368d20 Mon Sep 17 00:00:00 2001
 From: Hidemi Ishihara <hidemi@aquaxis.com>
-Date: Mon, 8 Jun 2020 22:26:36 +0900
+Date: Sat, 28 Nov 2020 08:47:55 +0000
 Subject: [PATCH 2/2] Added defconfig for Ultra96V2
 
 ---

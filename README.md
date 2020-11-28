@@ -17,12 +17,11 @@ $ cd <BUILD_DIR>
 ```bash
 $ git clone https://github.com/aquaxis/meta-aquaxis
 $ ./meta-aquaxis/create_env.sh
-$ cd poky/
-$ source ./oe-init-build-env ../build_pmu-firmware/
+$ source ./poky/oe-init-build-env ../build_pmu-firmware/
 $ bitbake pmu-firmware
-$ cd ../poky/
-$ source ./oe-init-build-env ../build_ultra96v2/
-$ mv ../build_pmu-firmware/pmutmp .
+$ cd ../
+$ source ./poky/oe-init-build-env ../build_ultra96v2/
+$ mv ../build_pmu-firmware/pmutmp-glibc ./pmutmp
 $ bitbake core-image-minimal
 ```
 
