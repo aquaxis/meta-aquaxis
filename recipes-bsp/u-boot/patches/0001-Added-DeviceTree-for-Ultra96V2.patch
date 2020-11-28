@@ -1,6 +1,6 @@
-From 8e5d5651fcf33520fae3aefbe6d8f394803bb1b1 Mon Sep 17 00:00:00 2001
+From d86ed22a8c6d03d4c6928cbd74e467c5e15d3ad7 Mon Sep 17 00:00:00 2001
 From: Hidemi Ishihara <hidemi@aquaxis.com>
-Date: Mon, 8 Jun 2020 22:26:07 +0900
+Date: Sat, 28 Nov 2020 08:47:10 +0000
 Subject: [PATCH 1/2] Added DeviceTree for Ultra96V2
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH 1/2] Added DeviceTree for Ultra96V2
  create mode 100755 arch/arm/dts/zynqmp-ultra96-v2.dts
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index ed6643e639..ef3c8eaab1 100644
+index 304fbd20d9..a3f959ada4 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
 @@ -308,7 +308,8 @@ dtb-$(CONFIG_ARCH_ZYNQMP) += \

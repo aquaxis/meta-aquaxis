@@ -1,28 +1,22 @@
-UBOOT_VERSION = "v2020.01"
+UBOOT_VERSION = "v2020.02"
 UBOOTURI = "git://github.com/Xilinx/u-boot-xlnx.git;protocol=https"
 UBRANCH = ""
-SRCREV = "86c84c0d0f916ec00d5d76a32dc9372a25429ca9"
+SRCREV = "265d7a7ff8a82792344e8fb5c322e8f00d47e6cc"
 LIC_FILES_CHKSUM = "file://README;beginline=1;endline=4;md5=744e7e3bb0c94b4b9f6b3db3bf893897"
+
+LICENSE = "GPLv2+"
 
 FILESEXTRAPATHS_append := "${THISDIR}/patches:"
 SRC_URI += " file://0001-Added-DeviceTree-for-Ultra96V2.patch "
 SRC_URI += " file://0002-Added-defconfig-for-Ultra96V2.patch "
 
-#do_configure_append() {
-#    make mrproper
-#    make xilinx_zynqmp_ultra96_v2_defconfig
-#}
-
-#do_compile_prepend() {
-#    make mrproper
-#    make xilinx_zynqmp_ultra96_v2_defconfig
-#}
-
 do_compile () {
     echo "**************************************************"
     echo "defconfig"
     echo "**************************************************"
-    oe_runmake xilinx_zynqmp_ultra96_v2_defconfig
+    oe_runmake ${UBOOT_MACHINE}
+#    cat ${THISDIR}/configs/${UBOOT_DEFCONFIG}
+    echo "CONFIG_DEFAULT_DEVICE_TREE=\"${UBOOT_DEVICETREE}\"" >> ${B}/.config
     echo "**************************************************"
     echo "make"
     echo "**************************************************"
@@ -33,7 +27,6 @@ do_compile () {
     echo "**************************************************"
 
 }
-
 
 do_install () {
     echo "**************************************************"
