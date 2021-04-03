@@ -62,3 +62,19 @@ source ./oe-init-build-env ../build_pmu-firmware
 cp ../sources/meta-aquaxis/conf/template/pmu-firmware/bblayers.conf ./conf
 cp ../sources/meta-aquaxis/conf/template/pmu-firmware/local.conf ./conf
 touch ./conf/sanity.conf
+
+# Create a build directory/ビルドディレクトリの作成
+#cd poky
+#source ./oe-init-build-env ../build_zyboz7
+
+# Copy a config file/設定のコピー
+#cp ../sources/meta-aquaxis/conf/template/zybo-zynq7/bblayers.conf ./conf
+#cp ../sources/meta-aquaxis/conf/template/zybo-zynq7/local.conf ./conf
+#touch ./conf/sanity.conf
+
+# Create SD Card directory/SDカードディレクトリの作成
+#mkdir sd_card
+#cp ../sources/meta-aquaxis/conf/template/sd_card/* ./sd_card/
+
+#cd ..
+

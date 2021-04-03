@@ -44,8 +44,8 @@ KERNEL_FEATURES_append_kc705-microblazeel = " bsp/kc705-microblazeel/kc705-micro
 ######################################################################
 # Linux Kernel 5.4.x
 ######################################################################
-LINUX_VERSION = "5.4.43"
-SRCREV_machine = "298f136c10d7ed67b6185a7923e08fdca7dd8f8c"
+LINUX_VERSION = "5.4.85"
+SRCREV_machine = "395106a2e36eeebfc0881ff3e0cdf69ab163a791"
 KBRANCH = "v5.4/standard/xlnx-soc"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
@@ -63,9 +63,10 @@ SRC_URI_append = " file://defconfig.cfg"
 #SRCREV_machine = "8e7ffa0e01be9ddf7b68986f1fc1bc82f85e3127"
 #KBRANCH = "v5.7/standard/xlnx-soc"
 
+#LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
+
 #FILESEXTRAPATHS_prepend := "${THISDIR}/patches/v5.7.x:"
 #SRC_URI_append = " file://0001-Added-DeviceTree-for-Ultra96V2.patch "
 
 #FILESEXTRAPATHS_prepend := "${THISDIR}/files/v5.7.x:"
 #SRC_URI_append = " file://defconfig.cfg"
-
